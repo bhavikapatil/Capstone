@@ -6,7 +6,7 @@ import numpy as np
 
 import pandas as pd
 
-data = {'Year':[],'Rank': [],'Name': [],'Team': [],'Salary': []}
+data = {'Year':[],'Season_Year':[],'Rank': [],'Name': [],'Team': [],'Salary': []}
         
      #create dataframe
 df_Salary = pd.DataFrame(data)
@@ -14,7 +14,7 @@ df_Salary = pd.DataFrame(data)
 StartYear = 2021
 #X = 2020
 
-Year=[2016,2017,2018,2019,2020,2021]
+Year=[2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021]
 
 for X in Year:
  if X == StartYear:
@@ -47,7 +47,7 @@ for X in Year:
                 Team= test.find_all('a')[1].text
             except:
                 Team= test.find_all('td')[2].text
-            new_row = {'Year':X, 'Rank':Rank, 'Name':Name, 'Team':Team, 'Salary':Salary}
+            new_row = {'Year':X,'Season Year': str(X-1)+"-"+str(X)[-2:] , 'Rank':Rank, 'Name':Name, 'Team':Team, 'Salary':Salary}
             df_Salary = df_Salary.append(new_row, ignore_index=True)
      for test in results.find_all('tr', class_='evenrow'):
             Rank = test.find_all('td')[0].text
@@ -57,16 +57,16 @@ for X in Year:
                 Team= test.find_all('a')[1].text
             except:
                 Team= test.find_all('td')[2].text
-            new_row = {'Year':X, 'Rank':Rank, 'Name':Name, 'Team':Team, 'Salary':Salary}
+            new_row = {'Year':X,'Season Year': str(X-1)+"-"+str(X)[-2:] , 'Rank':Rank, 'Name':Name, 'Team':Team, 'Salary':Salary}
             df_Salary = df_Salary.append(new_row, ignore_index=True)
  print (X) 
 
 df_Salary['Rank']=df_Salary['Rank'].astype('int64')
 df_Salary['Year']=df_Salary['Year'].astype('int64')
 df_Salary_Sorted=df_Salary.sort_values(by=['Year', 'Rank'])     
-#df_Salary_Sorted.to_csv('NBA Salary.csv', header=True)
-df_Salary_Sorted.to_csv('NBA Salary.csv',
-                        columns=['Year','Rank','Name','Team','Salary'], 
+#df_Salary_Sorted.to_csv('NBA Salary 2011-2021.csv', header=True)
+df_Salary_Sorted.to_csv('NBA Salary 2011-2021.csv',
+                        columns=['Year','Season Year','Rank','Name','Team','Salary'], 
                         index=False)
 
 
