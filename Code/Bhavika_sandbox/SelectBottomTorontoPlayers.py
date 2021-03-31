@@ -24,7 +24,8 @@ filetereddf['PIE'] = df_playerAverages['PIE']
 filetereddf['PER'] = df_playerAverages['PER']
 filetereddf['SALARY'] = df_playerAverages['SALARY']
 
-filetereddf = filetereddf.loc[(filetereddf['PLUS_MINUS'] < 5.59) & (filetereddf['PIE'] < 9.37) & (filetereddf['PER'] >15.99)]
+filetereddf = filetereddf.loc[(filetereddf['PLUS_MINUS'] < 5.59) | (filetereddf['PIE'] < 9.37) | 
+(filetereddf['PER'] >15.99)].sort_values(["PLUS_MINUS", "PIE", "PER"]).head(5)
 
 print("--------------------------------")
 print(filetereddf)
