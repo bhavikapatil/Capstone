@@ -36,6 +36,13 @@ aggregateddata['FG_PCT'] = aggregateddata['FGM'] / aggregateddata['FGA']
 aggregateddata['FG3_PCT'] = aggregateddata['FG3M'] / aggregateddata['FG3A']
 aggregateddata['FT_PCT'] = aggregateddata['FTM'] / aggregateddata['FTA']
 
+aggregateddata['TEAM_NAME'] = 'Toronto Raptors'
+aggregateddata['TEAM_ABBREVIATION'] = 'TOR'
+aggregateddata['TEAM_ID'] = '1610612761'
+aggregateddata['SEASON_YEAR'] = '2019-20'
+aggregateddata['Game_Type'] = 'Regular Season'
+
+
 print(aggregateddata)
 
 #save file
