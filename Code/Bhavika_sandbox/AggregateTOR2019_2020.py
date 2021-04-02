@@ -5,22 +5,23 @@ import csv
 import joblib
 from sklearn.ensemble import RandomForestClassifier
 
-useOriginalData = False
+useOriginalData = True
 
 if(useOriginalData):
     toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_Regular.csv')
 else:
     toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_With_NewPlayers.csv')
 
-dropColumns = ['SEASON_YEAR', 'PLAYER_ID', 'PLAYER_NAME', 'TEAM_ID',
-       'TEAM_ABBREVIATION', 'TEAM_NAME', 'PIE', 'SALARY', 'Game_Type', 'UID_STG']
+selectedColumns = ['GAME_ID', 'GAME_DATE', 'MATCHUP', 'MIN', 'FGM', 'FGA',
+       'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB',
+       'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'BLKA', 'PF', 'PFD', 'PTS',
+       'PLUS_MINUS', 'DD2', 'TD3', 'PER']
 
 #For replacement data, Drop WL
-if(not useOriginalData):
-    dropColumns.append("WL")
+if(useOriginalData):
+    selectedColumns.append("WL")
 
-toronto_playerGamelogs = toronto_playerGamelogs.drop(dropColumns, axis = 1)
-
+toronto_playerGamelogs = toronto_playerGamelogs[selectedColumns]
 print(toronto_playerGamelogs.columns)
 
 #For original TOR data, keep WL, for replacedments, remove it
