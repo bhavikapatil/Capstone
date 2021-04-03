@@ -19,7 +19,7 @@ print(df_TOR_2019_2020)
 #Step 2: Load Player replacement info from TOR_PlayerReplacement.xlsx
 #Sheet 1 "TOR" has TOR player which we will replace and Sheet 2 "Non-TOR" has the players with better performance
 
-xlsx = pd.ExcelFile(r'D:\McMaster\DAT205\Capstone\Data\TOR_PlayerReplacement.xlsx')
+xlsx = pd.ExcelFile(r'D:\McMaster\DAT205\Capstone\Data\TOR_PlayerReplacement_V2.xlsx')
 tor_players = pd.read_excel(xlsx, 'TOR')
 non_tor_players = pd.read_excel(xlsx, 'Non-TOR')
 
@@ -50,7 +50,7 @@ for index, row in tor_players.iterrows():
     else:
         newPlayers = pd.concat([newPlayers, playerData],ignore_index=True)
 
-newPlayers.to_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_NewPlayerData.csv') 
+#newPlayers.to_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_NewPlayerData.csv') 
 
 df_TOR_2019_2020 = pd.concat([df_TOR_2019_2020, newPlayers],ignore_index=True)
-df_TOR_2019_2020.to_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_With_NewPlayers.csv') 
+df_TOR_2019_2020.to_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_With_NewPlayers_V2.csv') 
