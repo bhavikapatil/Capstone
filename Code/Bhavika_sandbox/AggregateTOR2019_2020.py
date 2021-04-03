@@ -9,7 +9,7 @@ useOriginalData = True
 
 if(useOriginalData):
     #toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_Regular.csv')
-    toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedTORGameLogs\DAT205_Output_Enhanced_df_TF.csv')
+    toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\DAT205_Output_Enhanced_df_TF.csv')
 else:
     toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_With_NewPlayers.csv')
 
@@ -45,7 +45,7 @@ aggregateddata = aggregateddata.reset_index()
 aggregateddata['FG_PCT'] = aggregateddata['FGM'] / aggregateddata['FGA']
 aggregateddata['FG3_PCT'] = aggregateddata['FG3M'] / aggregateddata['FG3A']
 aggregateddata['FT_PCT'] = aggregateddata['FTM'] / aggregateddata['FTA']
-
+aggregateddata['PLUS_MINUS'] = aggregateddata['PLUS_MINUS']/5
 # aggregateddata['TEAM_NAME'] = 'Toronto Raptors'
 # aggregateddata['TEAM_ABBREVIATION'] = 'TOR'
 # aggregateddata['TEAM_ID'] = '1610612761'
@@ -57,9 +57,9 @@ print(aggregateddata)
 
 #save file
 if(useOriginalData):
-    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedTORGameLogs\AggrgatedGameLogs_2014-2020_Regular.csv') 
+    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\AggrgatedGameLogs_2014-2020_Regular.csv') 
 else:
-    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedTORGameLogs\AggrgatedTORGameLogs_2019-2020_Regular_NewPlayers.csv') 
+    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\AggrgatedGameLogs_2019-2020_Regular_NewPlayers.csv') 
 
 
 
