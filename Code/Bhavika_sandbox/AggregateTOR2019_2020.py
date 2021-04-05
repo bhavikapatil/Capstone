@@ -5,21 +5,22 @@ import csv
 import joblib
 from sklearn.ensemble import RandomForestClassifier
 
-useOriginalData = True
+useOriginalData = False
 
 if(useOriginalData):
     #toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_Regular.csv')
     toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\DAT205_Output_Enhanced_df_TF.csv')
 else:
-    toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_With_NewPlayers.csv')
+    toronto_playerGamelogs = pd.read_csv('D:\McMaster\DAT205\Capstone\Data\TOR_GameLogs_2019-20_With_NewPlayers_V2.csv')
 
 print(toronto_playerGamelogs.shape)
 
 
 
 print(toronto_playerGamelogs.shape)
+# toronto_playerGamelogs = toronto_playerGamelogs[(toronto_playerGamelogs["Game_Type"] == "Regular Season") 
+# | (toronto_playerGamelogs["Game_Type"] == "Playoffs")]
 
-toronto_playerGamelogs = toronto_playerGamelogs[toronto_playerGamelogs["Game_Type"] == "Regular Season"]
 print(toronto_playerGamelogs.shape)
 
 selectedColumns = ['SEASON_YEAR', 'TEAM_ID', 'TEAM_ABBREVIATION','TEAM_NAME', 'GAME_ID', 'GAME_DATE', 'Game_Type', 'MATCHUP', 'MIN', 'FGM', 'FGA',
@@ -57,9 +58,9 @@ print(aggregateddata)
 
 #save file
 if(useOriginalData):
-    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\AggrgatedGameLogs_2014-2020_Regular.csv') 
+    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\AggrgatedGameLogs_2014-2020.csv') 
 else:
-    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\AggrgatedGameLogs_2019-2020_Regular_NewPlayers.csv') 
+    aggregateddata.to_csv('D:\McMaster\DAT205\Capstone\Data\AggrgatedGameLogs\AggrgatedGameLogs_2019-2020_Regular_NewPlayers_V2.csv') 
 
 
 
